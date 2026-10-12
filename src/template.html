@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ServiceOps Icon Library</title>
+<meta name="description" content="Every icon used in Motadata ServiceOps and its Dashboards module. Copy or download any icon as SVG, PNG, React or Vue.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233D8BD0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z'/%3E%3Crect x='3' y='14' width='7' height='7' rx='1'/%3E%3Ccircle cx='17.5' cy='17.5' r='3.5'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --ink: #364658; --ink-2: #64748B; --muted: #7B8FA5; --faint: #9CA3AF;
+    --line: #E5E7EB; --line-2: #DFE5ED; --bg: #FFFFFF; --bg-2: #F8FAFC; --bg-3: #F1F5F9;
+    --blue: #3D8BD0; --blue-bg: #EBF5FF; --ok: #15803D; --err: #DC2626;
+    --panel-w: 360px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; font: 13px/1.5 Inter, "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; color: var(--ink); background: var(--bg); }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+  code, pre, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+
+  .app { display: flex; flex-direction: column; height: 100%; }
+
+  /* ---- header ---- */
+  .head { flex: none; border-bottom: 1px solid var(--line); padding: 14px 24px 0; }
+  .head-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  h1 { margin: 0; font-size: 16px; font-weight: 600; }
+  .sub { margin: 2px 0 0; font-size: 12px; color: var(--muted); }
+  .sub b { color: var(--ink); font-weight: 500; }
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .search { position: relative; }
+  .search input { height: 32px; width: 280px; max-width: 70vw; border: 1px solid #D1D5DB; border-radius: 4px; padding: 0 30px 0 32px; font: inherit; color: var(--ink); }
+  .search input::placeholder { color: var(--faint); }
+  .search input:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+  .search svg { position: absolute; left: 10px; top: 9px; color: var(--faint); }
+  .search button { position: absolute; right: 4px; top: 4px; width: 24px; height: 24px; border: 0; background: none; border-radius: 4px; color: var(--faint); display: none; align-items: center; justify-content: center; }
+  .search.has button { display: flex; }
+  .search button:hover { background: var(--bg-3); color: var(--ink); }
+  .seg { display: inline-flex; border: 1px solid var(--line-2); border-radius: 4px; overflow: hidden; }
+  .seg button { height: 30px; padding: 0 10px; border: 0; border-left: 1px solid var(--line-2); background: #fff; font-size: 12px; font-weight: 500; }
+  .seg button:first-child { border-left: 0; }
+  .seg button:hover { background: var(--bg-3); }
+  .seg button[aria-pressed="true"] { background: var(--blue-bg); color: var(--blue); }
+
+  .tabs { display: flex; gap: 10px; margin-top: 10px; }
+  .tabs button { border: 0; background: none; padding: 10px 8px; border-bottom: 2px solid transparent; font-size: 14px; color: #6B7280; }
+  .tabs button:hover { background: #F5F7FA; border-bottom-color: #CBD5E1; }
+  .tabs button[aria-selected="true"] { color: var(--blue); border-bottom-color: var(--blue); font-weight: 500; }
+  .tabs .n { margin-left: 6px; padding: 1px 6px; border-radius: 9px; background: var(--bg-3); color: var(--ink-2); font-size: 11px; font-weight: 500; }
+  .tabs button[aria-selected="true"] .n { background: var(--blue-bg); color: var(--blue); }
+
+  /* ---- body ---- */
+  .body { flex: 1; min-height: 0; display: flex; }
+  .nav { flex: none; width: 216px; overflow-y: auto; padding: 16px 8px 24px 16px; border-right: 1px solid var(--line); }
+  .nav-h { padding: 0 8px 6px; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .nav a { display: flex; justify-content: space-between; gap: 8px; padding: 6px 8px; border-radius: 4px; color: var(--ink); text-decoration: none; font-size: 12.5px; }
+  .nav a:hover { background: var(--bg-3); }
+  .nav a.on { background: var(--blue-bg); color: var(--blue); font-weight: 500; }
+  .nav a span { color: var(--faint); font-size: 11px; font-weight: 400; }
+  .main { flex: 1; min-width: 0; overflow-y: auto; padding: 16px 24px 48px; scroll-behavior: smooth; }
+
+  .how { margin-bottom: 20px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg-2); }
+  .how b.t { display: block; font-size: 13px; font-weight: 600; }
+  .how p { margin: 4px 0 0; max-width: 110ch; font-size: 12px; line-height: 1.6; color: var(--ink-2); }
+  .how a { color: var(--blue); }
+
+  section.grp { margin-bottom: 28px; scroll-margin-top: 8px; }
+  .grp-h { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 8px; margin-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .grp-h h2 { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
+  .grp-h h2 span { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--faint); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(116px, 1fr)); gap: 10px; }
+
+  .tile { position: relative; border: 1px solid var(--line); border-radius: 8px; background: #fff; transition: border-color .15s, box-shadow .15s; }
+  .tile:hover, .tile:focus-within { border-color: var(--blue); box-shadow: 0 1px 2px rgba(16,24,40,.06); }
+  .tile.sel { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); background: #FAFCFF; }
+  .tile-main { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; padding: 14px 6px 10px; border: 0; background: none; border-radius: 8px; }
+  .tile-ico { height: 48px; display: flex; align-items: center; justify-content: center; color: var(--ink); }
+  .tile:hover .tile-ico { color: var(--blue); }
+  .tile-name { width: 100%; padding: 0 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center; font-size: 11px; color: var(--ink-2); }
+  .tile-use { width: 100%; padding: 0 4px; margin-top: -6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center; font-size: 10px; color: var(--faint); }
+  .tile-acts { position: absolute; top: 4px; right: 4px; display: flex; gap: 2px; opacity: 0; transition: opacity .12s; }
+  .tile:hover .tile-acts, .tile:focus-within .tile-acts { opacity: 1; }
+  .tile-acts button { width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line-2); border-radius: 4px; background: #fff; color: var(--ink-2); }
+  .tile-acts button:hover { color: var(--blue); border-color: var(--blue); background: var(--blue-bg); }
+
+  .none { padding: 64px 0; text-align: center; color: var(--faint); }
+  .none button { margin-top: 10px; height: 32px; padding: 0 12px; border: 1px solid var(--line-2); border-radius: 4px; background: #fff; color: var(--blue); font-weight: 500; }
+  .none button:hover { background: var(--blue-bg); }
+
+  /* ---- detail panel ---- */
+  .panel { flex: none; width: var(--panel-w); border-left: 1px solid var(--line); display: none; flex-direction: column; background: #fff; }
+  .panel.open { display: flex; }
+  .panel-h { flex: none; display: flex; align-items: center; gap: 8px; padding: 12px 12px 12px 16px; border-bottom: 1px solid var(--line); }
+  .panel-h .nm { flex: 1; min-width: 0; }
+  .panel-h .nm b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; font-weight: 600; }
+  .panel-h .nm span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11.5px; color: var(--muted); }
+  .x { flex: none; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 4px; background: none; color: var(--ink-2); }
+  .x:hover { background: #F3F4F6; }
+  .panel-b { flex: 1; min-height: 0; overflow-y: auto; padding: 16px; }
+  .stage { position: relative; height: 168px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 8px; color: var(--ink);
+    background: #fff conic-gradient(#F4F6F9 25%, transparent 0 50%, #F4F6F9 0 75%, transparent 0) 0 0 / 16px 16px; }
+  .stage.dark { background-color: #1E293B; background-image: conic-gradient(#243044 25%, transparent 0 50%, #243044 0 75%, transparent 0); color: #fff; }
+  .stage .bgt { position: absolute; right: 6px; bottom: 6px; height: 24px; padding: 0 8px; border: 1px solid var(--line-2); border-radius: 4px; background: #fff; color: var(--ink-2); font-size: 11px; }
+  .stage .bgt:hover { color: var(--blue); border-color: var(--blue); }
+  .row { margin-top: 16px; }
+  .lbl { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; font-size: 12px; font-weight: 600; }
+  .lbl span { font-weight: 400; font-size: 11px; color: var(--muted); }
+  .swatches { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .sw { width: 28px; height: 28px; padding: 0; border: 1px solid var(--line-2); border-radius: 4px; background: #fff; display: flex; align-items: center; justify-content: center; }
+  .sw i { width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(0,0,0,.12); }
+  .sw[aria-pressed="true"] { border-color: var(--blue); box-shadow: 0 0 0 1px var(--blue); }
+  .sw.cc { width: auto; padding: 0 8px; font-size: 11px; font-family: ui-monospace, Consolas, monospace; }
+  .swatches input[type=color] { width: 28px; height: 28px; padding: 2px; border: 1px solid var(--line-2); border-radius: 4px; background: #fff; cursor: pointer; }
+  .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .btns.three { grid-template-columns: repeat(3, 1fr); }
+  .btn { height: 32px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0 10px; border: 1px solid var(--line-2); border-radius: 4px; background: #fff; font-size: 12px; font-weight: 500; white-space: nowrap; }
+  .btn:hover { background: var(--bg-3); }
+  .btn.pri { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .btn.pri:hover { background: #3479B8; }
+  .btn[disabled] { opacity: .45; cursor: not-allowed; }
+  .hint { margin: 6px 0 0; font-size: 11px; color: var(--muted); }
+  pre.code { margin: 0; max-height: 132px; overflow: auto; padding: 10px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg-2); font-size: 11px; line-height: 1.5; white-space: pre-wrap; word-break: break-all; color: var(--ink); }
+
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 12px); padding: 8px 14px; border-radius: 6px; background: #364658; color: #fff; font-size: 12.5px; box-shadow: 0 6px 20px rgba(16,24,40,.2); opacity: 0; pointer-events: none; transition: opacity .15s, transform .15s; z-index: 50; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+  .toast.err { background: var(--err); }
+
+  @media (max-width: 1100px) { .nav { display: none; } }
+  @media (max-width: 760px) {
+    .head { padding: 12px 16px 0; } .main { padding: 12px 16px 40px; }
+    .search input { width: 100%; max-width: none; } .search { flex: 1 1 100%; }
+    .panel { position: fixed; inset: auto 0 0 0; width: auto; max-height: 82vh; border-left: 0; border-top: 1px solid var(--line); border-radius: 12px 12px 0 0; box-shadow: 0 -8px 30px rgba(16,24,40,.18); z-index: 20; }
+    .stage { height: 120px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="head">
+    <div class="head-top">
+      <div>
+        <h1>ServiceOps Icon Library</h1>
+        <p class="sub" id="sub"></p>
+      </div>
+      <div class="controls">
+        <div class="search" id="searchBox">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="q" type="text" placeholder="Search icons by name or group" aria-label="Search icons" autocomplete="off" spellcheck="false">
+          <button id="qx" aria-label="Clear search"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+        </div>
+        <div class="seg" id="sizes" role="group" aria-label="Icon size"></div>
+      </div>
+    </div>
+    <div class="tabs" id="tabs" role="tablist"></div>
+  </header>
+
+  <div class="body">
+    <nav class="nav" id="nav" aria-label="Groups"></nav>
+    <main class="main" id="main"></main>
+    <aside class="panel" id="panel" aria-label="Icon details"></aside>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const SETS = /*__DATA__*/[];
+
+const SIZES = [16, 20, 24, 32, 48];
+const COLORS = ['currentColor', '#364658', '#3D8BD0', '#64748B', '#16A34A', '#DC2626', '#FFFFFF'];
+const NEUTRAL = '#364658'; // what "currentColor" is drawn in when a file has no page to inherit from
+const state = { set: SETS[0].id, q: '', size: 24, color: 'currentColor', sel: null, dark: false };
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const norm = (s) => s.toLowerCase().replace(/[-_\s]/g, '');
+const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const pascal = (s) => s.replace(/(^|[-_\s])([a-zA-Z0-9])/g, (_, __, c) => c.toUpperCase());
+const setById = (id) => SETS.find((s) => s.id === id);
+const fileName = (ic) => slug(ic.n.replace(/([a-z0-9])([A-Z])/g, '$1-$2'));
+const compName = (ic) => { const p = pascal(ic.n); return /^Icon|Icon$/.test(p) ? p : p + 'Icon'; };
+
+/* ---- one icon, as text ---- */
+function svgOf(ic, size, color) {
+  let s = ic.s.replace('<svg', `<svg width="${size}" height="${size}"`);
+  if (color && color !== 'currentColor') s = s.replace(/currentColor/g, color);
+  return s;
+}
+function jsxOf(ic) {
+  const body = ic.s
+    .replace(/\s([a-z]+(?:[-:][a-z]+)+)=/g, (m, a) => (a.startsWith('aria-') || a.startsWith('data-') ? m : ' ' + a.replace(/[-:]([a-z])/g, (_, c) => c.toUpperCase()) + '='))
+    .replace('<svg', '<svg width={size} height={size}')
+    .replace(/^(<svg[^>]*)>/, '$1 {...props}>');
+  return `export function ${compName(ic)}({ size = ${state.size}, ...props }) {\n  return (\n    ${body}\n  );\n}\n`;
+}
+function vueOf(ic) {
+  const body = ic.s.replace('<svg', '<svg :width="size" :height="size"');
+  return `<script setup>\ndefineProps({ size: { type: [Number, String], default: ${state.size} } })\n<\/script>\n\n<template>\n  ${body}\n</template>\n`;
+}
+const lucideOf = (ic, fw) => fw === 'vue'
+  ? `import { ${ic.l} } from 'lucide-vue-next'\n\n<${ic.l} :size="${state.size}" />`
+  : `import { ${ic.l} } from 'lucide-react';\n\n<${ic.l} size={${state.size}} />`;
+
+/* ---- copy / download ---- */
+let toastT;
+function toast(msg, err) {
+  const t = $('toast');
+  t.textContent = msg; t.className = 'toast on' + (err ? ' err' : '');
+  clearTimeout(toastT); toastT = setTimeout(() => (t.className = 'toast'), 1800);
+}
+async function copy(text, what) {
+  try { await navigator.clipboard.writeText(text); }
+  catch {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    const ok = document.execCommand('copy'); ta.remove();
+    if (!ok) return toast('The browser blocked the clipboard', true);
+  }
+  toast(what + ' copied');
+}
+function save(blob, name) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+function downloadSvg(ic) {
+  save(new Blob([svgOf(ic, state.size, state.color) + '\n'], { type: 'image/svg+xml' }), fileName(ic) + '.svg');
+  toast(fileName(ic) + '.svg downloaded');
+}
+function downloadPng(ic, scale) {
+  const px = state.size * scale;
+  const color = state.color === 'currentColor' ? NEUTRAL : state.color;
+  const url = URL.createObjectURL(new Blob([svgOf(ic, px, color)], { type: 'image/svg+xml' }));
+  const img = new Image();
+  img.onload = () => {
+    const c = document.createElement('canvas'); c.width = px; c.height = px;
+    c.getContext('2d').drawImage(img, 0, 0, px, px);
+    URL.revokeObjectURL(url);
+    c.toBlob((b) => {
+      const name = `${fileName(ic)}-${state.size}${scale > 1 ? '@' + scale + 'x' : ''}.png`;
+      save(b, name); toast(name + ' downloaded');
+    }, 'image/png');
+  };
+  img.onerror = () => { URL.revokeObjectURL(url); toast('Could not draw this icon as PNG', true); };
+  img.src = url;
+}
+
+/* ---- search ---- */
+const hit = (ic, g) => !state.q || norm(ic.n + ' ' + ic.u + ' ' + ic.l + ' ' + g.label).includes(norm(state.q));
+const matches = (set) => set.groups.map((g) => ({ g, icons: g.icons.filter((ic) => hit(ic, g)) })).filter((x) => x.icons.length);
+const count = (rows) => rows.reduce((n, r) => n + r.icons.length, 0);
+const total = (set) => set.groups.reduce((n, g) => n + g.icons.length, 0);
+
+/* ---- render ---- */
+const I = {
+  copy: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>',
+  down: '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5"/></svg>',
+  x: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>',
+};
+const iconAt = (key) => { const [s, gi, ii] = key.split(':'); const set = setById(s); return set && set.groups[gi] && set.groups[gi].icons[ii]; };
+
+function renderHead() {
+  const all = SETS.reduce((n, s) => n + total(s), 0);
+  $('sub').innerHTML = `Every icon used across ServiceOps and its Dashboards module · <b>${all}</b> total` +
+    (state.q ? ` · <b>${SETS.reduce((n, s) => n + count(matches(s)), 0)}</b> matching` : '');
+  $('tabs').innerHTML = SETS.map((s) => {
+    const n = state.q ? count(matches(s)) : total(s);
+    return `<button role="tab" aria-selected="${s.id === state.set}" data-set="${s.id}">${esc(s.label)}<span class="n">${n}</span></button>`;
+  }).join('');
+  $('sizes').innerHTML = SIZES.map((s) => `<button aria-pressed="${s === state.size}" data-size="${s}">${s}px</button>`).join('');
+  $('searchBox').classList.toggle('has', !!state.q);
+}
+
+function renderMain() {
+  const set = setById(state.set);
+  const rows = matches(set);
+  $('nav').innerHTML = `<div class="nav-h">${esc(set.label)} groups</div>` +
+    rows.map(({ g, icons }) => `<a href="#g-${slug(g.label)}" data-g="${slug(g.label)}">${esc(g.label)}<span>${icons.length}</span></a>`).join('');
+
+  let html = '';
+  if (!state.q) {
+    html += `<div class="how"><b class="t">How to use</b>
+      <p>Click an icon to open its details, then copy or download it as <b>SVG</b>, <b>PNG</b>, a <b>React</b> or <b>Vue</b> component, or its <b>lucide</b> import. Hover a tile for quick copy and download. The size above applies to everything you copy or download.</p>
+      <p>${esc(set.note)} <a href="${set.source}" target="_blank" rel="noopener">Open the source page</a></p></div>`;
+  }
+  if (!rows.length) {
+    const other = SETS.filter((s) => s.id !== set.id).map((s) => ({ s, n: count(matches(s)) })).find((o) => o.n);
+    html += `<div class="none">No icon in ${esc(set.label)} matches “${esc(state.q)}”.` +
+      (other ? `<br><button data-set="${other.s.id}">Show ${other.n} in ${esc(other.s.label)}</button>` : '') + `</div>`;
+  }
+  for (const { g, icons } of rows) {
+    const gi = set.groups.indexOf(g);
+    html += `<section class="grp" id="g-${slug(g.label)}"><div class="grp-h"><h2>${esc(g.label)} <span>— ${icons.length}</span></h2></div><div class="grid">`;
+    for (const ic of icons) {
+      const key = `${set.id}:${gi}:${g.icons.indexOf(ic)}`;
+      html += `<div class="tile${state.sel === key ? ' sel' : ''}" data-key="${key}">
+        <button class="tile-main" data-act="open" title="${esc(ic.n)}">
+          <span class="tile-ico">${svgOf(ic, ic.k === 'artwork' ? Math.max(state.size, 40) : state.size)}</span>
+          <span class="tile-name">${esc(ic.n)}</span>${ic.u ? `<span class="tile-use">${esc(ic.u)}</span>` : ''}
+        </button>
+        <span class="tile-acts"><button data-act="copy" title="Copy SVG" aria-label="Copy ${esc(ic.n)} SVG">${I.copy}</button><button data-act="svg" title="Download SVG" aria-label="Download ${esc(ic.n)} SVG">${I.down}</button></span>
+      </div>`;
+    }
+    html += `</div></section>`;
+  }
+  $('main').innerHTML = html;
+}
+
+function renderPanel() {
+  const p = $('panel');
+  const ic = state.sel && iconAt(state.sel);
+  if (!ic) { p.classList.remove('open'); p.innerHTML = ''; return; }
+  const [sid, gi] = state.sel.split(':');
+  const set = setById(sid), g = set.groups[gi];
+  const kind = ic.k === 'lucide' ? `lucide · ${ic.l}` : ic.k === 'artwork' ? 'illustrated artwork' : 'custom SVG';
+  const shown = svgOf(ic, 96, state.color === 'currentColor' ? null : state.color);
+  const code = svgOf(ic, state.size, state.color);
+  p.classList.add('open');
+  p.innerHTML = `
+    <div class="panel-h">
+      <div class="nm"><b title="${esc(ic.n)}">${esc(ic.n)}</b><span>${esc(set.label)} · ${esc(g.label)} · ${esc(kind)}</span></div>
+      <button class="x" data-p="close" aria-label="Close details">${I.x}</button>
+    </div>
+    <div class="panel-b">
+      <div class="stage${state.dark ? ' dark' : ''}">${shown}<button class="bgt" data-p="bg">${state.dark ? 'Light' : 'Dark'} background</button></div>
+      ${ic.u ? `<p class="hint">Used for: ${esc(ic.u)}</p>` : ''}
+
+      <div class="row"><div class="lbl">Size</div>
+        <div class="seg">${SIZES.map((s) => `<button aria-pressed="${s === state.size}" data-size="${s}">${s}px</button>`).join('')}</div></div>
+
+      <div class="row"><div class="lbl">Colour <span>${esc(state.color)}</span></div>
+        <div class="swatches">${COLORS.map((c) => c === 'currentColor'
+          ? `<button class="sw cc" aria-pressed="${state.color === c}" data-color="${c}" title="Inherits the text colour where it is used">currentColor</button>`
+          : `<button class="sw" aria-pressed="${state.color === c}" data-color="${c}" title="${c}" aria-label="${c}"><i style="background:${c}"></i></button>`).join('')}
+          <input type="color" id="pick" value="${/^#[0-9a-f]{6}$/i.test(state.color) ? state.color : NEUTRAL}" title="Pick a colour" aria-label="Pick a colour"></div>
+        ${/currentColor/.test(ic.s) ? '' : '<p class="hint">This icon carries its own colours, so the colour above does not change it.</p>'}</div>
+
+      <div class="row"><div class="lbl">SVG</div>
+        <div class="btns"><button class="btn pri" data-p="copy-svg">${I.copy} Copy SVG</button><button class="btn" data-p="dl-svg">${I.down} Download .svg</button></div></div>
+
+      <div class="row"><div class="lbl">PNG <span>transparent background</span></div>
+        <div class="btns three">${[1, 2, 4].map((k) => `<button class="btn" data-p="png" data-k="${k}">${I.down} ${state.size * k}px</button>`).join('')}</div>
+        ${state.color === 'currentColor' ? `<p class="hint">A PNG has no text colour to inherit, so it is drawn in ${NEUTRAL}. Pick a colour above to change it.</p>` : ''}</div>
+
+      <div class="row"><div class="lbl">Code</div>
+        <div class="btns"><button class="btn" data-p="jsx">${I.copy} React component</button><button class="btn" data-p="vue">${I.copy} Vue component</button>
+        ${ic.l ? `<button class="btn" data-p="lr">${I.copy} lucide-react</button><button class="btn" data-p="lv">${I.copy} lucide-vue-next</button>` : ''}</div>
+        ${ic.l ? '' : '<p class="hint">Not a lucide icon, so there is no import for it. Use the SVG or a component.</p>'}</div>
+
+      <div class="row"><div class="lbl">SVG code</div><pre class="code">${esc(code)}</pre></div>
+    </div>`;
+}
+
+function render() { renderHead(); renderMain(); renderPanel(); }
+function writeHash() {
+  const ic = state.sel && iconAt(state.sel);
+  history.replaceState(null, '', '#/' + state.set + (ic ? '/' + encodeURIComponent(ic.n) : ''));
+}
+function readHash() {
+  const m = /^#\/([^/]+)(?:\/(.+))?$/.exec(location.hash);
+  if (!m || !setById(m[1])) return;
+  state.set = m[1];
+  if (m[2]) {
+    const name = decodeURIComponent(m[2]);
+    setById(m[1]).groups.some((g, gi) => g.icons.some((ic, ii) => ic.n === name && (state.sel = `${m[1]}:${gi}:${ii}`)));
+  }
+}
+
+/* ---- events ---- */
+$('q').addEventListener('input', (e) => { state.q = e.target.value.trim(); renderHead(); renderMain(); });
+$('qx').addEventListener('click', () => { $('q').value = ''; state.q = ''; renderHead(); renderMain(); $('q').focus(); });
+document.addEventListener('keydown', (e) => {
+  const typing = /INPUT|TEXTAREA/.test(document.activeElement.tagName);
+  if (e.key === '/' && !typing) { e.preventDefault(); $('q').focus(); }
+  if (e.key === 'Escape') {
+    if (typing && state.q) { $('q').value = ''; state.q = ''; renderHead(); renderMain(); }
+    else if (state.sel) { state.sel = null; writeHash(); renderMain(); renderPanel(); }
+  }
+});
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-set],[data-size],[data-color],[data-act],[data-p],[data-g]');
+  if (!t) return;
+  if (t.dataset.set) { state.set = t.dataset.set; state.sel = null; writeHash(); render(); $('main').scrollTop = 0; return; }
+  if (t.dataset.size) { state.size = +t.dataset.size; render(); return; }
+  if (t.dataset.color) { state.color = t.dataset.color; renderPanel(); return; }
+  if (t.dataset.g) { e.preventDefault(); document.getElementById('g-' + t.dataset.g).scrollIntoView({ block: 'start' }); return; }
+  if (t.dataset.act) {
+    const key = t.closest('.tile').dataset.key, ic = iconAt(key);
+    if (t.dataset.act === 'copy') return copy(svgOf(ic, state.size, state.color), ic.n + ' SVG');
+    if (t.dataset.act === 'svg') return downloadSvg(ic);
+    state.sel = key; writeHash();
+    document.querySelectorAll('.tile.sel').forEach((el) => el.classList.remove('sel'));
+    t.closest('.tile').classList.add('sel');
+    return renderPanel();
+  }
+  const ic = iconAt(state.sel);
+  switch (t.dataset.p) {
+    case 'close': state.sel = null; writeHash(); renderMain(); renderPanel(); break;
+    case 'bg': state.dark = !state.dark; renderPanel(); break;
+    case 'copy-svg': copy(svgOf(ic, state.size, state.color), ic.n + ' SVG'); break;
+    case 'dl-svg': downloadSvg(ic); break;
+    case 'png': downloadPng(ic, +t.dataset.k); break;
+    case 'jsx': copy(jsxOf(ic), 'React component'); break;
+    case 'vue': copy(vueOf(ic), 'Vue component'); break;
+    case 'lr': copy(lucideOf(ic, 'react'), 'lucide-react import'); break;
+    case 'lv': copy(lucideOf(ic, 'vue'), 'lucide-vue-next import'); break;
+  }
+});
+document.addEventListener('input', (e) => { if (e.target.id === 'pick') { state.color = e.target.value.toUpperCase(); } });
+document.addEventListener('change', (e) => { if (e.target.id === 'pick') { state.color = e.target.value.toUpperCase(); renderPanel(); } });
+
+/* the group you are reading lights up in the left list */
+$('main').addEventListener('scroll', () => {
+  const top = $('main').getBoundingClientRect().top + 24;
+  let cur = null;
+  document.querySelectorAll('section.grp').forEach((s) => { if (s.getBoundingClientRect().top <= top) cur = s.id.slice(2); });
+  document.querySelectorAll('.nav a').forEach((a) => a.classList.toggle('on', a.dataset.g === cur));
+}, { passive: true });
+window.addEventListener('hashchange', () => { state.sel = null; readHash(); render(); });
+
+readHash();
+render();
+if (state.sel) { const el = document.querySelector('.tile.sel'); if (el) el.scrollIntoView({ block: 'center' }); }
+</script>
+</body>
+</html>
