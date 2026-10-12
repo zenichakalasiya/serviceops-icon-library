@@ -43,7 +43,10 @@ const serviceops = raw.a.map((g) => ({
   }),
 }));
 
-const dashboard = raw.b.map((g) => ({
+// Widget artwork is hidden from the library (still in icons-raw.json).
+const HIDDEN = ['Widget artwork'];
+
+const dashboard = raw.b.filter((g) => !HIDDEN.includes(g.label)).map((g) => ({
   label: g.label,
   icons: g.icons.map((i) => {
     const art = g.label === 'Widget artwork';
@@ -65,7 +68,7 @@ const SETS = [
   {
     id: 'dashboard', label: 'Dashboard',
     source: 'https://zenichakalasiya.github.io/ServiceOps_Dashboard_v2/#/icons',
-    note: 'Icons of the Dashboards module. Lucide glyphs sit on a widened viewBox (-1.5 -1.5 27 27) so they match the optical size of the current ServiceOps icons. Widget artwork is illustrated 64 × 64 artwork.',
+    note: 'Icons of the Dashboards module. Lucide glyphs sit on a widened viewBox (-1.5 -1.5 27 27) so they match the optical size of the current ServiceOps icons.',
     groups: dashboard,
   },
 ];

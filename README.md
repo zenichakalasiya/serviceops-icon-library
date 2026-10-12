@@ -4,7 +4,7 @@ Every icon used in Motadata ServiceOps and its Dashboards module, on one standal
 
 Live: https://zenichakalasiya.github.io/serviceops-icon-library/
 
-- Two sets, each kept in its own groups: **ServiceOps** (265 icons) and **Dashboard** (164 icons).
+- Two sets, each kept in its own groups: **ServiceOps** (265 icons) and **Dashboard** (146 icons).
 - Click an icon to copy or download it as SVG, PNG (1x, 2x, 4x), a React or Vue component, or its lucide import.
 - Hover a tile for quick copy and download. One search covers both sets.
 - Link straight to an icon: `#/serviceops/ChevronDown`, `#/dashboard/chart-donut`.
