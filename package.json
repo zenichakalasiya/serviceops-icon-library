@@ -1,0 +1,24 @@
+{
+  "name": "serviceops-icon-library",
+  "version": "1.0.0",
+  "description": "Every icon used in Motadata ServiceOps and its Dashboards module, on one standalone page.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenichakalasiya/serviceops-icon-library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/zenichakalasiya/serviceops-icon-library/issues"
+  },
+  "homepage": "https://github.com/zenichakalasiya/serviceops-icon-library#readme",
+  "devDependencies": {
+    "pathkit-wasm": "^1.0.0"
+  }
+}

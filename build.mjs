@@ -2,6 +2,7 @@
  * icons-raw.json is what src/scrape.mjs reads off the two live icon pages
  * (run `node src/scrape.mjs data/icons-raw.json`, then `node build.mjs`). */
 import { readFileSync, writeFileSync } from 'node:fs';
+import { flatten } from './src/flatten.mjs';
 
 const raw = JSON.parse(readFileSync(new URL('./data/icons-raw.json', import.meta.url), 'utf8'));
 const template = readFileSync(new URL('./src/template.html', import.meta.url), 'utf8');
@@ -35,11 +36,19 @@ const lucideFromClass = (svg) => {
   return names.length ? pascal(names[names.length - 1]) : '';
 };
 
+// PAIRS=<file> also writes every icon before and after flattening, for a pixel comparison
+const pairs = [];
+const flat = (n, before, places) => {
+  const after = flatten(before, places);
+  if (after !== before) pairs.push({ n, before, after });
+  return after;
+};
+
 const serviceops = raw.a.map((g) => ({
   label: g.label,
   icons: g.icons.map((i) => {
     const custom = g.label === 'Product Navigation';
-    return { n: i.name, u: i.use, k: custom ? 'custom' : 'lucide', l: custom ? '' : i.name, s: clean(i.svg) };
+    return { n: i.name, u: i.use, k: custom ? 'custom' : 'lucide', l: custom ? '' : i.name, s: flat(i.name, clean(i.svg), 2) };
   }),
 }));
 
@@ -50,7 +59,7 @@ const dashboard = raw.b.filter((g) => !HIDDEN.includes(g.label)).map((g) => ({
   label: g.label,
   icons: g.icons.map((i) => {
     const art = g.label === 'Widget artwork';
-    let s = clean(i.svg);
+    let s = art ? clean(i.svg) : flat(i.name, clean(i.svg), 3);
     // The dashboard page hands out its lucide glyphs on a widened viewBox (67% ink, the
     // optical size of the icon set ServiceOps ships today). Same here, so the two agree.
     if (!art) s = s.replace('viewBox="0 0 24 24"', 'viewBox="-1.5 -1.5 27 27"');
@@ -62,13 +71,13 @@ const SETS = [
   {
     id: 'serviceops', label: 'ServiceOps',
     source: 'https://ronak-patel-motadata.github.io/ServiceOps-Ticket-Detail-/',
-    note: 'Icons of the ServiceOps technician portal. Each one is a single path on a 48 × 48 viewBox. Product Navigation is custom artwork; every other group is lucide.',
+    note: 'Icons of the ServiceOps technician portal. Each one is a single filled path on a 48 × 48 viewBox — strokes are already outlined and flattened. Product Navigation is custom artwork; every other group is lucide.',
     groups: serviceops,
   },
   {
     id: 'dashboard', label: 'Dashboard',
     source: 'https://zenichakalasiya.github.io/ServiceOps_Dashboard_v2/#/icons',
-    note: 'Icons of the Dashboards module. Lucide glyphs sit on a widened viewBox (-1.5 -1.5 27 27) so they match the optical size of the current ServiceOps icons.',
+    note: 'Icons of the Dashboards module. Each one is a single filled path — strokes are already outlined and flattened. Lucide glyphs sit on a widened viewBox (-1.5 -1.5 27 27) so they match the optical size of the current ServiceOps icons.',
     groups: dashboard,
   },
 ];
@@ -81,4 +90,8 @@ for (const s of SETS) {
   const noL = s.groups.flatMap((g) => g.icons).filter((i) => i.k === 'lucide' && !i.l).map((i) => i.n);
   console.log(s.label, s.groups.length, 'groups', n, 'icons', noL.length ? 'no lucide name: ' + noL : '');
 }
+const left = SETS.flatMap((s) => s.groups.flatMap((g) => g.icons)).filter((i) => /stroke="(?!none)/.test(i.s)).map((i) => i.n);
+console.log('still stroke-drawn:', left.length ? left.join(', ') : 'none');
+if (process.env.PAIRS) writeFileSync(process.env.PAIRS, JSON.stringify(pairs));
+console.log('flattened:', pairs.length);
 console.log('index.html', Math.round(json.length / 1024), 'KB of icon data');
